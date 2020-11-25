@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>United States Presidential Election Results 2020</title>
+
+    <!-- Bootstrap and other css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/hr.css" rel="stylesheet" />
+    <link href="css/load.css" rel="stylesheet" />
+
+    <style>
+      body {
+        background: url(images/rsz_2election.jpg) no-repeat right top,
+          linear-gradient(to right, #bb4b47, #ffffff);
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8">
+            <h1 style="text-align: center; font-weight: bold">
+              Προεδρικές εκλογές των ΗΠΑ 2020
+            </h1>
+            <br />
+            <hr />
+
+            <div id="loader">
+              <br /><br /><br /><br /><br /><br /><br /><br /><br />
+              <p
+                class="text-center"
+                style="text-align: center; font-size: large"
+              >
+                <b>Φόρτωση...</b>(απαιτείται σύνδεση λογαριασμού μέσω Metamask)
+              </p>
+              <div class="load"></div>
+            </div>
+
+            <div id="content" style="display: none">
+              <table id="pinakas1" class="table table-bordered">
+                <thead style="color: blue; background-color: darkkhaki">
+                  <tr>
+                    <th scope="col">Κόμμα</th>
+                    <th scope="col">Όνομα Υποψήφιου Προέδρου</th>
+                    <th scope="col">Ψήφοι</th>
+                  </tr>
+                </thead>
+                <tbody
+                  style="background-color: silver"
+                  id="candidatesResults"
+                ></tbody>
+              </table>
+
+              <table id="pinakas2" class="table table-bordered">
+                <thead style="color: blue; background-color: darkkhaki">
+                  <tr>
+                    <th scope="col">Κόμμα</th>
+                    <th scope="col">Όνομα Υποψήφιου Προέδρου</th>
+                  </tr>
+                </thead>
+                <tbody
+                  style="background-color: silver"
+                  id="candidatesResults2"
+                ></tbody>
+              </table>
+
+              <hr />
+
+              <form onSubmit="App.submitVote(); return false;">
+                <div class="form-group">
+                  <div id="winner">
+                    <p style="font-size: 250%; font-style: italic">
+                      ΝΙΚΗΤΗΣ ΤΩΝ ΠΡΟΕΔΡΙΚΩΝ ΕΚΛΟΓΩΝ ΤΩΝ ΗΠΑ 2020 ΕΙΝΑΙ Ο:
+                    </p>
+                    <p
+                      id="candidatesWinner"
+                      style="
+                        font-size: 350%;
+                        font-weight: bold;
+                        color: rgb(0, 16, 243);
+                      "
+                    ></p>
+                  </div>
+                  <label for="voterState">Επιλέξτε την πολιτεία σας</label>
+
+                  <select
+                    class="form-control"
+                    id="voterState"
+                    onchange="App.selecState(this)"
+                  >
+                    <option selected="true" disabled="disabled">
+                      Επιλέξτε πολιτεία
+                    </option>
+                  </select>
+
+                  <label for="candidatesSelect"
+                    >Επιλέξτε υποψήφιο πρόεδρο</label
+                  >
+                  <select
+                    class="form-control"
+                    id="candidatesSelect"
+                    onchange="App.selecPres(this)"
+                  ></select>
+                </div>
+                <div class="text-center" id="no-">
+                  <p id="_time">
+                    <button
+                      id="koumpi"
+                      type="submit"
+                      class="btn btn-success"
+                      disabled="disabled"
+                    >
+                      Υποβολή ψήφου
+                    </button>
+                  </p>
+                </div>
+                <hr />
+              </form>
+
+              <p style="font-size: 150%; color: black">
+                Οι κάλπες κλείνουν σε:
+              </p>
+              <p style="color: darkred; font-size: 200%" id="time"></p>
+
+              <br />
+              <p
+                id="accountAddress"
+                class="text-center"
+                style="font-style: italic"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/web3.min.js"></script>
+      <script src="js/truffle-contract.js"></script>
+      <script src="js/time.js"></script>
+      <script src="js/app.js"></script>
+    </center>
+  </body>
+</html>
